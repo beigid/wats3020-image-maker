@@ -1,21 +1,11 @@
 /* WATS 3020 Image Maker Code */
 
-//////////////////////////////////////////////////
-// ImageMaker Class Definition               /////
-////////////////////////////////////////////////////////////////////////
-// This class is used to manage the image manipulation and prep on    //
-// the page. It is instantiated when the page is loaded, and it       //
-// handles all the logic of updating the image preview with the data  //
-// submitted by users via the image maker form.                       //
-////////////////////////////////////////////////////////////////////////
-
 class ImageMaker {
     constructor(){
-        // When this class is instantiated, the `constructor()` method is executed.
-        // TODO: Set up attributes that point to the HTML elements we wish to work with.
+        // All are attributes that point ot the HTML we are working with
 
         // Used the DOM to select the CSS query Id "image-preview"
-        this.imagePreview = document.querySelector("#image-preview");
+        this.imagePreview = document.getElementById("image-preview");
 
         // Used createElement to create a new paragraph tag to be used within the HTML
         this.topText = document.createElement("p");
@@ -23,31 +13,29 @@ class ImageMaker {
         // Added a class attrivute of "top-text" to the topText, which is the new created "p" tag
         this.topText.setAttribute("class","top-text");
       
-        // TODO: Append `this.topText` as a child element to `this.imagePreview`
+        // Append `this.topText` as a child element to `this.imagePreview`
+        this.imagePreview.appendChild(this.topText);
 
+        // Create a new paragraph tag to be used within the HTML
+        this.bottomText = document.createElement("p");
+        
+        // Added a `class` attribute to `this.bottomText` that contains the classname "bottom-text". 
+        this.bottomText.setAttribute("class","bottom-text");
+      
+        // Append `this.bottomText` as a child element to `this.imagePreview`
+        this.imagePreview.appendChild(this.bottomText);
 
-        // TODO: create a new `<p>` element called `this.bottomText`
-        this.bottomText = ;
-        // TODO: Add a `class` attribute to `this.bottomText` that contains the classname "bottom-text".
+        // Select the `input` element and use 'select' since it is within the 'input', and use with the `name` attribute "backgroundImage"
+        this.backgroundInput = document.querySelector('select[name="backgroundImage"]');
 
-        // TODO: Append `this.bottomText` as a child element to `this.imagePreview`
+        // Select the `input` element with the `name` attribute "topText"
+        this.topTextInput = document.querySelector("input[name='topText']");
 
-        // This class also needs to use the form fields to read user input. Set
-        // those up for future use, too.
+        // Select the `input` element with the `name` attribute "bottomText"
+        this.bottomTextInput = document.querySelector("input[name='topText']");
 
-        // TODO: Select the `input` element with the `name` attribute "backgroundImage"
-        this.backgroundInput = ;
-
-        // TODO: Select the `input` element with the `name` attribute "topText"
-        this.topTextInput = ;
-
-        // TODO: Select the `input` element with the `name` attribute "bottomText"
-        this.bottomTextInput = ;
-
-        // NOTE: If you add additional form fields to modify other aspects of
-        // the image, then you will need to make attributes for each of those
-        // elements here.
     }
+
     drawPreview(){
         // This function is called whenever a user changes one of the form fields
         // and whenever an image is generated for download. This function must
@@ -55,12 +43,14 @@ class ImageMaker {
         // elements selected in the `constructor()` of this class in order to
         // update `this.imagePreview`.
 
-        // TODO: Update the `background-image` CSS property for `this.imagePreview`.
+        // Updated the imagePreview to use a value from the backgroundInput for backgroundImage (select>name>backgroundImage)
+        this.imagePreview.style.backgroundImage = `url(images/${this.backgroundInput.value})`;
 
-        // TODO: Update the `innerHTML` of `this.topText`.
-
-        // TODO: Update the `innerHTML` of `this.bottomText`
-
+        // Update the `innerHTML` of `this.topText`.
+          this.topText.innerHTML = this.topTextInput.value;
+      
+        // Update the `innerHTML` of `this.bottomText`
+          this.bottomText.innerHTML = this.bottomTextInput.value;
 
     }
     downloadImage(){
