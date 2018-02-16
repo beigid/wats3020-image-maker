@@ -14,13 +14,15 @@ class ImageMaker {
         // When this class is instantiated, the `constructor()` method is executed.
         // TODO: Set up attributes that point to the HTML elements we wish to work with.
 
-        // TODO: Select the `#image-preview` div using any document selector method.
-        this.imagePreview = ;
+        // Used the DOM to select the CSS query Id "image-preview"
+        this.imagePreview = document.querySelector("#image-preview");
 
-        // TODO: create a new `<p>` element called `this.topText`
-        this.topText = ;
-        // TODO: Add a `class` attribute to `this.topText` that contains the classname "top-text".
+        // Used createElement to create a new paragraph tag to be used within the HTML
+        this.topText = document.createElement("p");
 
+        // Added a class attrivute of "top-text" to the topText, which is the new created "p" tag
+        this.topText.setAttribute("class","top-text");
+      
         // TODO: Append `this.topText` as a child element to `this.imagePreview`
 
 
