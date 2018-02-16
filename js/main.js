@@ -32,7 +32,7 @@ class ImageMaker {
         this.topTextInput = document.querySelector("input[name='topText']");
 
         // Select the `input` element with the `name` attribute "bottomText"
-        this.bottomTextInput = document.querySelector("input[name='topText']");
+        this.bottomTextInput = document.querySelector("input[name='bottomText']");
 
     }
 
